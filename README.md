@@ -11,4 +11,4 @@ export async function highlight(code: string) {
 }
 ```
 
-[Open 'Calendar' in StackBlitz](https://stackblitz.com/github/ekqt/mini-highlighter?file=lib/shiki.ts&title=Mini%Highlighter).
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ekqt/mini-highlighter?file=lib/shiki.ts&title=Mini%Highlighter)
