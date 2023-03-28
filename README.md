@@ -34,4 +34,18 @@ export async function getStaticProps() {
 }
 ```
 
+## Using the `/app` directory
+
+```tsx
+import { highlight } from "@/lib/shiki";
+
+export default async function Home() {
+  const html = await highlight('console.log("Hello World")', {
+    lang: "ts",
+    theme: "github-dark",
+  });
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+}
+```
+
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ekqt/mini-highlighter?file=pages/index.tsx)
