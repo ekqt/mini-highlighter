@@ -5,16 +5,30 @@ import { InferGetStaticPropsType } from "next";
 export default function Home(
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
-  return <div dangerouslySetInnerHTML={{ __html: props.html }} />;
+  return (
+    <>
+      <div dangerouslySetInnerHTML={{ __html: props.htmlDark }} />
+      <div dangerouslySetInnerHTML={{ __html: props.htmlLight }} />
+    </>
+  );
 }
 
 export async function getStaticProps() {
-  const code = fs.readFileSync("lib/shiki.ts", "utf8");
-  const html = await highlight(code);
+  const codeDark = fs.readFileSync("lib/shiki.ts", "utf8");
+  const codeLight = fs.readFileSync("lib/example.tsx", "utf8");
+  const htmlDark = await highlight(codeDark, {
+    lang: "ts",
+    theme: "github-dark",
+  });
+  const htmlLight = await highlight(codeLight, {
+    lang: "ts",
+    theme: "github-light",
+  });
 
   return {
     props: {
-      html,
+      htmlDark,
+      htmlLight,
     },
   };
 }
