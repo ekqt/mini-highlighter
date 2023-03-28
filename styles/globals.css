@@ -1,10 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: rgb(15 23 42);
+  @apply bg-gradient-to-b from-gray-700 to-gray-600 m-0 p-0;
 }
 
 * {
@@ -14,19 +14,39 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-div {
-  padding: 1rem;
+main {
+  @apply max-w-5xl mx-auto lg:py-12 py-6 px-4 space-y-12 overflow-x-scroll;
 }
 
-pre.shiki {
-  margin: 0;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  overflow-x: scroll;
+.shiki {
+  @apply m-0 py-7 rounded-md shadow-lg overflow-x-scroll;
 }
 
-pre.shiki code span.line {
-  font-family: ui-monospace, monospace;
-  font-size: 1rem;
-  line-height: 1.75;
+.shiki code {
+  @apply grid;
+}
+
+.shiki .line {
+  @apply px-8 text-base inline-flex w-full leading-7 relative;
+}
+
+.shiki .line[data-line]:before {
+  @apply content-[attr(data-line)] text-slate-500 opacity-40 -ml-2 mr-5 inline-flex justify-end min-w-[2ch];
+}
+
+.shiki .line[data-line][data-add-line]:before {
+  @apply content-["+"];
+}
+
+.shiki .line[data-line][data-remove-line]:before {
+  @apply content-["-"];
+}
+
+.shiki .line[data-add-line]:after {
+  @apply bg-green-700 opacity-20 content-[""] inset-0 absolute
+    pointer-events-none w-full;
+}
+
+.shiki .line[data-remove-line]:after {
+  @apply bg-red-700 opacity-20 content-[""] inset-0 absolute pointer-events-none w-full;
 }
